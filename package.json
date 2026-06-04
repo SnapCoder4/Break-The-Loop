@@ -1,0 +1,28 @@
+{
+  "name": "break-the-loop",
+  "version": "1.0.0",
+  "description": "BREAK The Loop - Kampanye kesadaran adiksi game online. Main boleh, kecanduan jangan. Kelompok 8, Universitas Bunda Mulia, Cyberpsychology.",
+  "main": "script.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SnapCoder4/Break-The-Loop.git"
+  },
+  "keywords": [
+    "cyberpsychology",
+    "gaming-addiction",
+    "awareness-campaign"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SnapCoder4/Break-The-Loop/issues"
+  },
+  "homepage": "https://github.com/SnapCoder4/Break-The-Loop#readme",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
