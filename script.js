@@ -369,6 +369,17 @@
         })
         .join("");
 
+      // ===== Kirim hasil ke email via EmailJS =====
+      kirimHasil({
+        level: level,
+        pct: pct,
+        low: low,
+        mid: mid,
+        high: high,
+        reco: reco.join(", "),
+        waktu: new Date().toLocaleString("id-ID", { timeZone: "Asia/Jakarta" }),
+      });
+
       // ===== Animasi gauge =====
       var arc = document.getElementById("gaugeArc");
       var levelEl = document.getElementById("gaugeLevel");
@@ -544,5 +555,46 @@
     });
 
     update();
+  }
+
+  /* ============================================================
+     Kirim hasil kuis ke email via EmailJS
+     Cara setup (5 menit):
+     1. Daftar gratis di https://www.emailjs.com
+     2. Dashboard → Email Services → Add Service → pilih Gmail
+     3. Dashboard → Email Templates → Create Template
+        Isi template dengan variabel: {{level}}, {{pct}}, {{low}},
+        {{mid}}, {{high}}, {{reco}}, {{waktu}}
+     4. Salin: Public Key, Service ID, Template ID
+     5. Ganti ketiga nilai di bawah ini
+  ============================================================ */
+  function kirimHasil(data) {
+    // ⬇ Ganti tiga nilai ini dengan milikmu
+    var SERVICE_ID = "service_etqy4wu";
+    var TEMPLATE_ID = "template_4ixap2n";
+    // Public Key sudah diisi di <head> index.html
+
+    if (SERVICE_ID === "YOUR_SERVICE_ID") {
+      // Belum disetup — log saja ke console supaya tidak error
+      console.log("[BREAK The Loop] Hasil kuis (EmailJS belum disetup):", data);
+      return;
+    }
+
+    emailjs
+      .send(SERVICE_ID, TEMPLATE_ID, {
+        level: data.level,
+        pct: data.pct + "%",
+        low: data.low,
+        mid: data.mid,
+        high: data.high,
+        reco: data.reco,
+        waktu: data.waktu,
+      })
+      .then(function () {
+        console.log("[BREAK The Loop] Hasil kuis terkirim ke email ✓");
+      })
+      .catch(function (err) {
+        console.warn("[BREAK The Loop] Gagal kirim email:", err);
+      });
   }
 })();
