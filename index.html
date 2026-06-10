@@ -42,7 +42,9 @@
       })();
     </script>
 
-    <!-- Vercel Analytics -->
+    <!-- Vercel Web Analytics (@vercel/analytics v2.0.1) -->
+    <!-- Following official documentation: https://vercel.com/docs/analytics/quickstart -->
+    <!-- Initialize analytics queue -->
     <script>
       window.va =
         window.va ||
@@ -50,6 +52,7 @@
           (window.vaq = window.vaq || []).push(arguments);
         };
     </script>
+    <!-- Load analytics script -->
     <script defer src="/_vercel/insights/script.js"></script>
   </head>
   <body>
